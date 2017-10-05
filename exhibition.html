@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fighting Words</title>
+
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body class="no-scroll disable-animation">
+        <div id="overlay-mask"></div>
+        <div id="overlay-image-container"></div>
+
+        <header id="site-header">
+            <h1>Fighting Words</h1>
+            <h2>American Revolutionay War Pamphlets</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="exhibition.html">Exhibition</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <nav id="article-index">
+            <div class="tab">
+                INDEX
+            </div>
+
+            <ul>
+                <!-- populated by xhr request -->
+            </ul>
+        </nav>
+
+        <div id="nav-controls">
+            <div class="nav-control prev">
+                <a href="javascript:void(0)"><!-- styled with background image --></a>
+            </div>
+            <div class="nav-control next">
+                <a href="javascript:void(0)"><!-- styled with background image --></a>
+            </div>
+        </div>
+
+        <div id="article-list">
+            <!-- populated by xhr request -->
+        </div>
+
+        <script id="article-index-item-template" type="text/x-handlebars-template">
+            <li><a href='#{{href}}'>{{name}}</a></li>
+        </script>
+        <script id="article-template" type="text/x-handlebars-template">
+            <article>
+                <a name="#{{trimmedName}}"/>
+
+                <section class="top">
+                    <h3 class="title">{{title}}</h3>
+                    <h4 class="author">
+                        {{author}}
+                        
+                        {{#if authorBirth}}
+                            {{authorBirth}}&ndash;{{authorDeath}}
+                        {{else}}
+                            {{#if authorDeath}}
+                                {{authorDeath}}
+                            {{/if}}
+                        {{/if}}
+                    </h4>
+                    
+                    <div class="bibliographic-info">
+                        <div class="publisher">{{publisher}}</div>
+                        <div class="location">{{edition}}</div>
+                        <div class="call-number">{{callNumber}}</div>
+                        <div class="location">{{location}}</div>
+                    </div>
+                </section>
+                
+                <section class="left">
+                    <div class="image-gallery">
+                        {{#foreach imageUrls}}
+                            {{#if $first}}
+                                <img src="" data-url="{{this}}" class="active"/>
+                            {{/if}}
+                            
+                            <img src="" data-url="{{this}}"/>
+                        {{/foreach}}
+                    </div>
+                </section>
+
+                <section class="right">
+                    <div class="video">
+                        <iframe src="" data-url="{{youTubeUrl}}?html5=True" frameborder="0"></iframe>
+                    </div>
+
+                    <blockquote>
+                        {{{descriptiveText}}}
+                    </blockquote>
+                </section>
+                
+                <section class="bottom">
+                    
+                </section>
+            </article>
+        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/js-yaml.min.js"></script>
+        <script src="js/handlebars.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/data-manager.js"></script>
+        <script src="js/code.js"></script>
+    </body>
+</html>
+
